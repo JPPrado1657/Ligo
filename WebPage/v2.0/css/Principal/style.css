@@ -1,0 +1,43 @@
+.card-image{
+    max-height: 10% !important;
+}
+.card{
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+
+.collection{
+    position: fixed;
+    width:16%;
+
+
+}
+#side1{
+    padding:0px;
+}
+#men{
+    background-color: #F1F1EF;
+    color: #3D4F77;
+}
+
+#men:hover{
+   background-color: #3D4F77;
+    color: #F1F1EF;
+}
+.mo{
+    height: 1500px;
+}
+
+.modal-footer{
+  color:white;
+}
+#Imagen_Modal{
+  object-fit: cover;
+  margin-top: 20px;
+  height: 15em;
+  width: 15em;
+  box-shadow: 0px 0px 3px grey;
+}
+a#usuario{
+  color: grey !important;
+}

@@ -1,0 +1,41 @@
+  <h5 class="title">Estas por reportar este producto: </h5>
+
+<div class="row ">
+
+<div class="col s2 ">
+
+</div>
+<div class="col s8">
+  <?php
+  getProductoRep($productoReportar);
+  ?>
+  <div class="col s12 m6 l8">
+    <form class="col s12" action="php/Reportar/confirmarRP.php" method="post">
+      <div class="row">
+        <div class="input-field col s12">
+          <?php getDropdownReportes(); ?>
+
+        </div>
+        <div class="input-field col s12">
+          <textarea name="razon" id="razon" class="materialize-textarea"></textarea>
+          <label for="razon">Cuéntanos más de la ofenza: </label>
+        </div>
+        <div class="col s12 ">
+
+              <input type="checkbox" class="filled-in" id="acuerdo"  />
+
+        <label for="acuerdo">Estoy de enterado que encaso de un reporte falso tendre una penalizacion</label>
+        </div>
+
+      </div>
+      <button class="btn waves-effect waves-light red" type="submit" name="action">Reportar
+       <i class="material-icons right">warning</i>
+     </button>
+    </form>
+  </div>
+</div>
+<div class="col s2">
+
+</div>
+
+</div>

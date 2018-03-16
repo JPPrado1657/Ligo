@@ -1,0 +1,312 @@
+<div  id="navTotalP">
+  <div class="col s12" id="UserTab">
+
+
+
+        <div class = "row" id="navRow">
+            <div class ="col s3 m2">
+
+            </div>
+            <div class ="col s3 m8 push" >
+                <ul class="left tabs tabs-transparent" id="navtabs">
+                <li class="tab col s3"><a class = "active" href="#test1">Productos</a></li>
+
+                <li class="tab col s3"><a href="#test3">Comentarios</a></li>
+
+              </ul>
+
+            </div>
+            <div class="bnav col m2">
+
+          </div>
+
+        </div>
+
+
+  </div>
+</div>
+<div class="row" id="rowTotal">
+    <div class = "col s2" id="side" >
+        <div class="section table-of-contents fixed">
+          <?php  getImagen($registro["Nombre_Usuario"]) ?>
+          <div id="perfilInfo">
+
+
+        <div class="row" id="infoS">
+          <div class="col s6 ">
+            <p id="UserSide"><strong><?=$registro["Nombre_Usuario"]?></strong></p>
+
+          </div>
+          <div class="col s6" id="labelset">
+            <?php if(isset($_SESSION['cuenta']) and $_SESSION['cuenta']!= " "){if($_SESSION['cuenta'] == $registro["Nombre_Usuario"]){  echo '
+
+            <label class="dropdown-button" href="#" data-activates="dropdownMod" id="configDrop"><i class="material-icons center" id="settingsIcon">settings</i></label>
+            <!--  Dropdown de Menu -->
+
+            <!-- Dropdown Structure -->
+            <ul id="dropdownMod" class="dropdown-content">
+            <li>  <a class="  set modal-trigger"  href="#modificarPerfil" value="d" >Modificar Perfil</a></li>
+            <li>  <a class=" set modal-trigger" href="#cambiarContrasena">Cambiar Contraseña</a>  </li>
+            <li class="divider"></li>
+
+            <li> <a class=" set modal-trigger" href="#modal1">Eliminar Cuenta</a></li>
+            <!-- Modal de cambio de contraseña (LINK) -->
+            </ul>
+
+
+            ';}  else {
+            echo '<a class="camb" href="reportar.php?id='.$registro["Nombre_Usuario"].'"id="reportarUsu"><i class="material-icons center" id="reportIcon">report</i></a>
+
+            ';
+            }} ?>
+          </div>
+        </div>
+            <p id="Nombre"><strong>Nombre:</strong> <?=$registro["Nombre"]?> <?=$registro["Apellido_P"]?> <?=$registro["Apellido_M"]?></p>
+            <p id="Rol"><strong>Semestre:</strong> <?=$registro["Semestre"]?></p>
+          </div>
+
+        </div>
+    </div>
+
+    <div  class = "col s10" id="contenidoPerfil">
+        <div id="test1">
+            <?php getProductosById($registro["Nombre_Usuario"])?>
+        </div>
+
+
+      <div id="test2">
+
+        </div>
+
+        <div id="test3">
+            <?php if(isset($_SESSION["cuenta"]) && $_SESSION["cuenta"]!=" "): ?>
+              <div class="row">
+                <div class="col s2">
+
+                </div>
+                <div class="col s8">
+
+                  <div class="" id="dejarComentario">
+                      <div class="row">
+
+
+                              <div class="input-field col s10">
+                                  <input id="Comentario" class="text" type="text">
+                                  <label for="textarea1">Comentario</label>
+                                  </div>
+                                  <div class="col s2" id="butCom">
+                                      <a onClick="crearComentario()" class="waves-effect blue waves-light btn">Comentar</a>
+                                  </div>
+
+
+
+                      </div>
+                  </div>
+
+              <?php endif; ?>
+              <div class="row" id="comentarios">
+                  <?php comentariosPerfil($registro["Nombre_Usuario"])?>
+              </div>
+</div>
+                <div class="col s2">
+
+                </div>
+
+              </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div id="modal1" class="modal">
+  <!-- Modal de eliminacion de cuenta -->
+  <div class="modal-content">
+    <!-- Confirmacion de solicitud -->
+    <h4>Eliminar Cuenta</h4>
+    <p>¿Deseas eliminar tu cuenta?</p>
+    <form class="col s12" method="POST" action="php/Principal/eliminarCuenta.php">
+      <button type="submit" id="borrarC" hidden="hidden"></button>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="modal-action modal-close waves-effect waves-grey grey btn-flat">Cancelar</a>
+    <label for="borrarC" class="modal-action modal-close waves-effect waves-red red btn-flat">Eliminar</laabel>
+  </div>
+</div>
+<!-- Modal Structure -->
+<div id="modificarPerfil" class="modal">
+  <!-- Modal de Modificacion de Perfil -->
+  <div class="modal-content">
+    <!-- Inputs -->
+    <h4>Modificar Perfil</h4>
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="Nombre" name="Nombre" type="text" class="validate" value="<?php echo $_SESSION['informacion']['Nombre'];?>" required>
+            <!--Valores de la sesion precargados -->
+            <label for="Nombre">Nombre</label>
+          </div>
+          <div class="input-field col s4">
+            <input id="Apellido_P" name="Apellido_P" type="text" class="validate" value="<?php echo $_SESSION['informacion']['Apellido_P'];?>" required>
+            <!--Valores de la sesion precargados -->
+            <label for="Apellido_P">Apellido Paterno</label>
+          </div>
+          <div class="input-field col s4">
+            <input id="Apellido_M" name="Apellido_M" type="text" class="validate" value="<?php echo $_SESSION['informacion']['Apellido_M'];?>" required>
+            <!--Valores de la sesion precargados -->
+            <label for="Apellido_M">Apellido_M</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Foto</span>
+                <input type="file" name="imagenPerfil">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button onclick="actualizarDatos()" id="modificar" hidden="hidden"></button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <label for="modificar" class="modal-action modal-close waves-effect waves-blue blue btn-flat ">Cambiar</label>
+  </div>
+</div>
+
+
+<div id="cambiarContrasena" class="modal">
+  <!-- Modal de Cambiod e COntraseña-->
+  <div class="modal-content">
+    <!-- Inputs necesarios-->
+    <h4>Cambiar Contraseña</h4>
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="ContrasenaA" name="ContrasenaA" type="password" class="validate" required>
+            <label for="ContrasenaA">Contraseña Actual</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="Contrasena" name="Contrasena" type="password" class="validate" required>
+            <label for="Contrasena">Contraseña </label>
+          </div>
+        </div>
+
+        <button onclick="cambiarContrasena()" id="cambia" hidden="hidden"></button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <label for="cambia" class="modal-action modal-close waves-effect waves-blue blue btn-flat ">Cambiar</label>
+  </div>
+</div>
+
+
+
+  <div id="modal3" class="modal-fixed-footer modal" height="20%" margin="10px">
+      <div class="modal-content" id="modalcontent3" height="100px">
+           <div class="row">
+              <div class="col s4"> <div class="" id="id_img3">
+
+              </div>
+                  <div class="row">
+                  <div class="col s2"> <img class="circle" width="35px" ></div>
+                  <div id="" class="col s10 center-align"><a id="usuario"></a> </div>
+                  </div>
+             </div>
+              <div class="col s8">
+       <div class="container">
+                       <div id="respuesta"></div>
+         <h3 id="tituloform" name="tituloform"><strong>  </strong></h3>
+                       <br>
+              <h6 id ="descripcionProducto"> </h6>
+           <br><div id="precioProducto"></div>
+          <div id="formaSC">
+          <form class="col s12">
+              <div class ="row">
+                  <input id="Id_Producto" type="hidden">
+                  <input id="Vendedor" type="hidden">
+                  <div class="input-field col s6">
+                      <input id="cantidad" type="number">
+                      <label for="cantidad">Cantidad</label>
+                  </div>
+              </div>
+          </form>
+          </div>
+        </div>
+              </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="row">
+                  <div class="col s1">
+                  <div id="rep">
+
+                  </div>
+                  </div>
+                  <div class="col s4">
+
+                  </div>
+                  <div id="paypal" class="col s4">
+                  </div>
+                  <div id="SolicitarCompra" class="col s3">
+                  </div>
+              </div>
+      </div>
+          </div>
+
+
+<div id="modal4" class="modal-fixed-footer modal" height="20%" margin="10px">
+    <div class="modal-content" id="modalcontent4" height="100px">
+
+         <div class="row">
+            <div class="col s4">
+              <div id="id_img2">
+
+                </div>
+                <div class="row">
+                    <br>
+                    <br>
+
+                <a class="waves-effect waves-light btn"><i class="material-icons left">image</i>Subir imagen</a>
+                </div>
+           </div>
+            <div class="col s8">
+                 <div class="container">
+                     <div id="respuesta"></div>
+                     <h4>Editar producto</h4>
+                      <input name="id" id="id" type="hidden">
+                      <input name="usu" id="usu" type="hidden">
+                     <input id="cat" hidden="hidden">
+       <input id="nombre"><strong>  </strong>
+                     <br>
+            <input id ="descripcion">
+                     <input id="precio">
+      </div>
+
+
+            </div>
+            </div>
+        <div class="row content">
+
+        </div>
+
+
+        </div>
+<button onclick="cambiarProductoPerfil()" id="mod" hidden="hidden"></button>
+      <button onclick="borrarProductoPerfil()" id="ui" hidden="hidden"></button>
+              <div class="modal-footer">
+ <label for="ui" class="modal-action modal-close waves-effect waves-red btn-flat red">Eliminar producto</label>
+          <label for="mod" class="modal-action modal-close waves-effect waves-green btn-flat green">Guardar</label>
+
+        </div>
+  </div>

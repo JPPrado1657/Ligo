@@ -1,0 +1,38 @@
+<h5 class="title">Estas por Reportar al Usuario : <?php echo $usuarioReportar?></h5>
+<div class="row ">
+
+  <div class="col s2 ">
+
+  </div>
+  <div class="col s8">
+
+
+
+  <form class="col s12" action="php/Reportar/confirmar.php" method="post">
+    <div class="row">
+      <input type="text" name="usuarioR" id="usuarioR" hidden="hidden" value="<?php echo $usuarioReportar?>"/>
+      <div class="input-field col s12">
+        <?php getDropdownReportes(); ?>
+
+      </div>
+      <div class="input-field col s12">
+        <textarea name="razon" id="razon" class="materialize-textarea"></textarea>
+        <label for="razon">Cuéntanos más de la ofenza: </label>
+      </div>
+      <div class="col s12">
+
+            <input type="checkbox" class="filled-in" id="acuerdo"  />
+
+      <label for="acuerdo">Estoy de enterado que encaso de un reporte falso tendre una penalizacion</label>
+      </div>
+
+    </div>
+    <button class="btn waves-effect waves-light red" type="submit" name="action">Reportar
+     <i class="material-icons right">warning</i>
+   </button>
+  </form>
+</div>
+<div class="col s2">
+
+</div>
+</div>

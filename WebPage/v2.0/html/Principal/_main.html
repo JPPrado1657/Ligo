@@ -1,0 +1,73 @@
+
+<div id="mainframe">
+
+
+<!-- Pagina de inicio donde se muesta carusel, y productos destacados -->
+
+
+        <!-- Carusel con disntintos paneles para enseñar lo mejor de la pagina -->
+        <div class="carousel carousel-slider center" style="height: 20em;" data-indicators="true">
+            <div class="carousel-fixed-item center">
+
+            </div>
+            <div class="carousel-item #01579b light-blue darken-4 white-text" href="#one!" id="carim1">
+
+            </div>
+            <div class="carousel-item #64b5f6 blue lighten-2 white-text" href="#two!" id="carim2">
+
+            </div>
+            <div class="carousel-item #90caf9 blue lighten-3 white-text" href="#three!" id="carim3">
+
+            </div>
+            <div class="carousel-item #bbdefb blue lighten-4 white-text" href="#four!" id="carim4">
+
+            </div>
+          </div>
+        <h4 id="lastP">Ultimos productos</h4>
+<div id="productos" class="row"></div>
+
+
+
+
+
+  <div id="modal4" class="modal-fixed-footer modal" height="20%" margin="10px">
+     <div class="modal-content" id="modalcontent4" height="100px">
+
+          <div class="row">
+             <div class="col s4"> <img id="imagencarta" width="250px" src="Recursos/brownie.jpg">
+                 <div class="row">
+                     <br>
+                     <br>
+
+                 <a class="waves-effect waves-light btn"><i class="material-icons left">image</i>Subir imagen</a>
+                 </div>
+            </div>
+             <div class="col s8">
+                  <div class="container">
+                      <div id="respuesta"></div>
+                      <h4>Editar producto</h4>
+                       <input name="id" id="id" type="hidden">
+                      <input id="cat" hidden="hidden">
+        <input id="nombre"><strong>  </strong>
+                      <br>
+             <input id ="descripcion">
+                      <input id="precio">
+       </div>
+
+
+             </div>
+             </div>
+         <div class="row content">
+
+         </div>
+
+
+         </div>
+ <button onclick="cambiarProducto()" id="mod" hidden="hidden"></button>
+       <button onclick="borrarProducto()" id="borrar" hidden="hidden"></button>
+               <div class="modal-footer">
+  <label for="borrar" class="modal-action modal-close waves-effect waves-red btn-flat red">Eliminar producto</label>
+           <label for="mod" class="modal-action modal-close waves-effect waves-green btn-flat green">Guardar</label>
+
+         </div>
+   </div>

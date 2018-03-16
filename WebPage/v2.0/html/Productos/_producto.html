@@ -1,0 +1,162 @@
+
+ <div class="row">
+     <div class="col s2" id="side1">
+
+    <div class="collection cat">
+<a    class="collection-item center-align "  onClick="mostrarProductosGeneral()" >Todos los productos</a>
+   <?php getCategorias()  ?>
+
+
+
+</div>
+
+
+     </div>
+
+    <div class="col s10">
+        <div class="row"></div>
+        <div class="row"></div>
+        <div id="aqui">
+
+
+        </div>
+
+<div id="productos"><?php echo getProductos1(); ?></div>
+
+
+
+    </div>
+
+ <div id="modal4" class="modal-fixed-footer modal" height="20%" margin="10px">
+    <div class="modal-content" id="modalcontent4" height="100px">
+
+         <div class="row">
+            <div class="col s4">
+              <div id="id_img2">
+
+              </div>
+                <div class="row">
+                    <br>
+                    <br>
+
+                <a class="waves-effect waves-light btn"><i class="material-icons left">image</i>Subir imagen</a>
+                </div>
+           </div>
+            <div class="col s8">
+                 <div class="container">
+                     <div id="respuesta"></div>
+                     <h4>Editar producto</h4>
+                      <input name="id" id="id" type="hidden">
+                     <input id="cat" hidden="hidden">
+       <input id="nombre"><strong>  </strong>
+                     <br>
+            <input id ="descripcion">
+                     <input id="precio">
+      </div>
+
+
+            </div>
+            </div>
+        <div class="row content">
+
+        </div>
+
+
+        </div>
+<button onclick="cambiarProducto()" id="mod" hidden="hidden"></button>
+      <button onclick="borrarProducto()" id="borrar" hidden="hidden"></button>
+              <div class="modal-footer">
+ <label for="borrar" class="modal-action modal-close waves-effect waves-red btn-flat red">Eliminar producto</label>
+          <label for="mod" class="modal-action modal-close waves-effect waves-blue btn-flat blue">Guardar</label>
+
+        </div>
+  </div>
+
+
+<div id="modal3" class="modal-fixed-footer modal" height="20%" margin="10px">
+    <div class="modal-content" id="modalcontent3" height="100px">
+         <div class="row">
+            <div class="col s4">
+                <div class="row">
+
+                <div id="" class="col s10 center-align"><a id="usuario"></a> </div>
+                </div>
+           </div>
+            <div class="col s8">
+     <div class="container">
+                     <div id="respuesta"></div>
+       <h3 id="tituloform" name="tituloform"><strong>  </strong></h3>
+                     <br>
+            <h6 id ="descripcionProducto"> </h6>
+         <br><div id="precioProducto"></div>
+      </div>
+            </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+              <div class="row">
+                <div class="col s1">
+                <div id="rep">
+
+                </div>
+                </div>
+                <div class="col s8">
+
+                </div>
+                <!-- <div id="paypal" class="col s4">
+                </div> -->
+                <div id="SolicitarCompra" class="col s3">
+                </div>
+
+            </div>
+        </div>
+
+     </div>
+
+
+     <div id="modalSolicitud" class="modal-fixed-footer modal" height="20%" margin="10px">
+    <div class="modal-content" id="modalcontent3" height="100px">
+         <div class="row">
+            <div class="col s4"><div id="id_img3">
+
+            </div>
+                <div class="row">
+              
+                <div id="" class="col s10 center-align"><a id="usuarioSolicitud"></a> </div>
+                </div>
+           </div>
+            <div class="col s8">
+     <div class="container">
+                     <div id="respuesta"></div>
+       <h3 id="tituloformSolicitud" name="tituloform"><strong>  </strong></h3>
+                     <br>
+            <h6 id ="descripcionProductoSolicitud"> </h6>
+         <br><div id="precioProductoSolicitud"></div>
+        <form id="formaSolicitud" class="col s12">
+            <div class ="row">
+                <input id="Id_ProductoSolicitud" type="hidden">
+                <input id="VendedorSolicitud" type="hidden">
+                <div class="input-field col s6" id="inputCantidad">
+                </div>
+                <?php getDropdownUbicaciones(); ?>
+            </div>
+         </form>
+         <a href="#map">mapa</a>
+      </div>
+            </div>
+            </div>
+        <div id="map" class="s12"></div>
+        </div>
+        <div class="modal-footer">
+                <div class="col s1">
+                <div id="rep">
+
+                </div>
+                </div>
+                <div id="SolicitarCompraSolicitud" class="right-align">
+                </div>
+            </div>
+        </div>
+  </div>
+
+</div>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ligo: Acercando lo que necesitsas</title>
+  <!-- Archivos de css y fonts e iconos moestrados en la pagina -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+  <link href="css/Principal/principal.php" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/Perfil/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/Principal/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <script src="https://use.fontawesome.com/70accadbdd.js"></script>
+</head>
+<!-- Cuerpo de la pagina -->
+<body>
+<main>
+  <!-- Barra de navegacion -->
+  <div class="navbar-fixed">
+    <nav class="navegacion" role="navigation">
+      <div class="nav-wrapper container">
+
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <a id="logo-container" href="index.php" class="brand-logo">
+            <div id="imagenDiv" >
+            <img src="./Recursos/LogoLb.png"alt="" id="imagenLogo">
+            </div>
+          </a><!-- Logo General-->
+
+          <li><a href="productos.php" id="navMainText">Categorias</a></li><!--Categorias Boton-->
+
+        </ul>
+        <ul class="right hide-on-med-and-down" id="navbar-links">
+          <li><label class="label-icon" for="search"><i class="material-icons">search</i></label></li><!--Barra de busqueda -->
+          <li>
+            <div class="input-field inline " id="search_div">
+              <input onkeyup="buscarProductos()" id="search_h" type="search" required>
+            </div>
+          </li>
+          <li><a class="modal-trigger" href="#modal1" id="navMainText">Iniciar Sesion</a></li><!-- Boton inicio de sesion -->
+          <li><a class="modal-trigger" href="#modal2" id="navMainText">Registrarse</a></li><!-- Boton de registro -->
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="#">Home</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a><!--Nav bar Colapsable -->
+      </div>
+    </nav>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal"><!-- Modal de inicio de sesion-->
+    <div class="modal-content">
+      <h4>Iniciar Sesion</h4>
+
+      <form id="sesionarse"class="col s12" method="POST" action="php/Principal/iniciarSesion.php"><!--Request al PHP de inicio de seison -->
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="Nombre_Usuario" name="Nombre_Usuario" type="text" class="validate"><!-- Input -->
+            <label for="Nombre_Usuario">Usuario</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock_outline</i>
+            <input id="Contrasena" name="Contrasena" type="password" class="validate"><!--Input -->
+            <label for="Contrasena">Contraseña</label>
+          </div>
+        </div>
+        <button type="submit" id="iniciarS" hidden="hidden"></button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="binicio modal-action modal-close waves-effect waves-grey grey btn-flat" id="cancelarI">Cancelar</a>
+      <label for="iniciarS" class="binicio modal-action modal-close waves-effect waves-blue blue btn-flat" id="iniciarI">Inciar Sesion</label>
+    </div>
+  </div>
+  <div id="modal3" class="modal-fixed-footer modal" height="20%" margin="10px">
+      <div class="modal-content" id="modalcontent3" height="100px">
+           <div class="row">
+              <div class="col s4" >
+                <div id="id_img">
+
+                </div>
+           </div>
+            <div class="col s8">
+     <div class="container">
+                     <div id="respuesta"></div>
+       <h3 id="tituloform" name="tituloform"><strong>  </strong></h3>
+                     <br>
+            <h6 id ="descripcionProducto"> </h6>
+         <br><div id="precioProducto"></div>
+      </div>
+            </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+              <div class="row">
+                <div class="col s1">
+                <div id="rep">
+
+                </div>
+                </div>
+                <div class="col s8">
+
+                </div>
+                <!-- <div id="paypal" class="col s4">
+                </div> -->
+                <div id="SolicitarCompra" class="col s3">
+                </div>
+
+            </div>
+        </div>
+
+     </div>
+
+  <!-- Modal Structure -->
+  <div id="modal2" class="modal modal-fixed-footer"><!-- Modal de registro-->
+    <div class="modal-content">
+      <h4>Registrate</h4>
+
+      <div class="row">
+        <form id="registro" class="col s12" method="POST" action="php/Principal/registrar.php" enctype="multipart/form-data"><!-- Solicitud a PHP de registro-->
+          <div class="row"><!-- Parametros empleados-->
+            <p>Nombre Completo: </p>
+            <div class="input-field col s4">
+              <input id="Nombre" name="Nombre" type="text" class="validate" required>
+              <label for="Nombre">Nombre</label>
+            </div>
+            <div class="input-field col s4">
+              <input id="Apellido_P" name="Apellido_P" type="text" class="validate" required>
+              <label for="Apellido_P">Apellido Paterno</label>
+            </div>
+            <div class="input-field col s4">
+              <input id="Apellido_M" name="Apellido_M" type="text" class="validate" required>
+              <label for="Apellido_M">Apellido_M</label>
+            </div>
+          </div>
+            <p>Datos de Usuario: </p>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="Nombre_Usuario" name="Nombre_Usuario" type="text" class="validate" required>
+              <label for="Nombre_Usuario">Username</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="Correo" name="Correo" type="email" class="validate" required>
+              <label for="Correo">Correo</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="Contrasena" name="Contrasena" type="password" class="validate" required>
+              <label for="Contrasena">Confirmar Contraseña</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="ContrasenaC" name="ContrasenaC" type="password" class="validate" required>
+              <label for="ContrasenaC">Contraseña</label>
+            </div>
+          </div>
+          <p>Informacion Escolar: </p>
+          <br>
+          <div class="row">
+             <?php getGeneralDropdown(1940);?>
+            <div class="input-field col s6">
+
+              <select id="Semestre" name="Semestre" class="validate" required>
+            <option value="1">Enero-Mayo</option>
+            <option value="2">Agosto-Diciembre</option>
+          </select>
+              <label for="Semestre">Semestre</label>
+              <div id="ajaxResponse"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Foto</span>
+                <input type="file" id="Img_F" name="Img_F">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          </div>
+          <button type="submit" id="registrarse" hidden="hidden"></button>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="  modal-action modal-close waves-effect waves-grey grey btn-flat ">Cancelar</a>
+      <label for="registrarse" class="  modal-action modal-close waves-effect waves-blue blue btn-flat ">Registrarme</label>
+    </div>
+  </div>
+
+
+<div id="modal3" class="modal-fixed-footer modal" height="20%" margin="10px">
+    <div class="modal-content" id="modalcontent3" height="100px">
+         <div class="row">
+            <div class="col s4">
+              <div class="" id="id_img2">
+
+              </div>
+                <div class="row">
+                <div class="col s2"> <img class="circle" width="35px" ></div>
+                <div id="" class="col s10 center-align"><a id="usuario"></a> </div>
+                </div>
+           </div>
+            <div class="col s8">
+     <div class="container">
+                     <div id="respuesta"></div>
+       <h3 id="tituloform" name="tituloform"><strong>  </strong></h3>
+                     <br>
+            <h6 id ="descripcionProducto"> </h6>
+         <br><div id="precioProducto"></div>
+      </div>
+            </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+              <div class="row">
+                <div class="col s1">
+                <div id="rep">
+
+                </div>
+                </div>
+                <div class="col s8">
+
+                </div>
+                <!-- <div id="paypal" class="col s4">
+                </div> -->
+                <div id="SolicitarCompra" class="col s3">
+                </div>
+
+            </div>
+        </div>
+
+     </div>
+
+    <div id="mainframe">

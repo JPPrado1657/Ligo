@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ligo: Acercando lo que necesitsas</title>
+  <!-- CSS, iconos, y fuentes empleadas en la pagina -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+  <link href="css/Principal/principal.php" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/Perfil/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/Principal/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <script src="https://use.fontawesome.com/70accadbdd.js"></script>
+</head>
+<!-- Cuerpo de la pagina -->
+
+<body>
+  <main>
+
+  <!-- Barra de navegacion -->
+  <div class="navbar-fixed">
+    <nav class="navegacion" role="navigation">
+      <div class="nav-wrapper container">
+
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li>
+            <a id="logo-container" href="indexR.php" class="brand-logo">
+              <div id="imagenDiv">
+                <img src="./Recursos/LogoLb.png" alt="" id="imagenLogo">
+              </div>
+            </a>
+
+          </li>
+
+          <li><a href="productos.php" id="navMainText">Categorias</a></li>
+
+        </ul>
+        <ul class="right hide-on-med-and-down">
+
+          <li>
+            <label class="label-icon" for="search"><i class="material-icons">search</i>
+            </label>
+          </li>
+          <!--Forma de Busqueda  -->
+          <li id ="searchdiv">
+            <div class="input-field inline " id="search_div">
+              <input onkeyup="buscarProductos()" id="search_h" type="search" required>
+            </div>
+          </li>
+
+          <!-- Icono de modificacion, abre modal -->
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button quick-btn" data-activates='dropdownNotificaciones' class="brand-logo" onClick="cargaMensajesNotif()"><div id="notifDiv">
+              <i class="fa fa-bell"  id="iconNotif"><span class="label label-success" id="badage"></span></i></div></a></li>
+          <li><a class='dropdown-button' href='#' data-activates='dropdown' id="navMainText">Menú</a></li>
+
+          <!--  Dropdown de Menu -->
+
+          <!-- Dropdown Structure -->
+          <ul id='dropdown' class='dropdown-content'>
+            <li><a class="modal-trigger" href='Perfil.php?id=<?=$_SESSION["cuenta"];?>'>Perfil</a></li>
+            <!-- Modal de cambio de contraseña (LINK) -->
+
+            <!-- Cierre de sesion con llamada al php de cierre de sesion -->
+            <?php
+              echo obtenerRol($_SESSION["cuenta"]);
+            ?>
+            <!-- Modal de cambio de contraseña (LINK) -->
+            <li class="divider"></li>
+
+            <li><a href="php/Principal/cerrarSesion.php">Cerrar Sesion</a></li>
+            <!-- Modal de cambio de contraseña (LINK) -->
+          </ul>
+
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+          <!-- Barra colapsable -->
+          <li><a href="#">Home</a></li>
+        </ul>
+        <!-- AQUI VA NOTIFICATIONS -->
+        <ul id='dropdownNotificaciones' class='dropdown-content'>
+        </ul>
+        <!--                       -->
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modalMasterPro" class="modal modal-fixed-footer">
+<div class="modal-content" id="modalcontentInfo" height="100px">
+         <div class="row">
+            <div class="col s4">   <div class="row">
+              
+                </div>
+           </div>
+            <div class="col s8">
+     <div class="container">
+
+                     <div id="respuestaInfo"></div>
+       <h3 id="tituloInfo" name="tituloform"><strong>  </strong></h3>
+                     <br>
+            <h6 id ="descripcionInfo"> </h6>
+         <br><div id="cantidadInfo"></div>
+
+         <a href="#mapSolicitud">mapa</a>
+      </div>
+            </div>
+            </div>
+        <div id="mapSolicitud" class="s12"></div>
+        </div>
+        <div class="modal-footer">
+                <div class="col s1">
+                <div id="repInfo">
+
+                </div>
+                </div>
+                <div id="buttonInfo" class="right-align">
+                </div>
+            </div>
+  </div>
+      <div id="modal3" class="modal-fixed-footer modal" height="20%" margin="10px">
+    <div class="modal-content" id="modalcontent3" height="100px">
+         <div class="row">
+            <div class="col s4"><div id="id_img">
+
+            </div>
+                <div class="row">
+
+                <div id="" class="col s10 center-align"><a id="usuario"></a> </div>
+                </div>
+           </div>
+            <div class="col s8">
+     <div class="container">
+                     <div id="respuesta"></div>
+       <h3 id="tituloform" name="tituloform"><strong>  </strong></h3>
+                     <br>
+            <h6 id ="descripcionProducto"> </h6>
+         <br><div id="precioProducto"></div>
+      </div>
+            </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+              <div class="row">
+                <div class="col s1">
+                <div id="rep">
+
+                </div>
+                </div>
+                <div class="col s8">
+
+                </div>
+                <!-- <div id="paypal" class="col s4">
+                </div> -->
+                <div id="SolicitarCompra" class="col s3">
+                </div>
+
+            </div>
+        </div>
+
+     </div>
+
+      <div id="modalSolicitud" class="modal-fixed-footer modal" height="20%" margin="10px">
+    <div class="modal-content" id="modalcontent3" height="100px">
+         <div class="row">
+            <div class="col s4"> <div id="id_img3">
+
+            </div>
+                <div class="row">
+
+                <div id="" class="col s10 center-align"><a id="usuarioSolicitud"></a> </div>
+                </div>
+           </div>
+            <div class="col s8">
+     <div class="container">
+                     <div id="respuesta"></div>
+       <h3 id="tituloformSolicitud" name="tituloform"><strong>  </strong></h3>
+                     <br>
+            <h6 id ="descripcionProductoSolicitud"> </h6>
+         <br><div id="precioProductoSolicitud"></div>
+        <form id="formaSolicitud" class="col s12">
+            <div class ="row">
+                <input id="Id_ProductoSolicitud" type="hidden">
+                <input id="VendedorSolicitud" type="hidden">
+                <div class="input-field col s6" id="inputCantidad">
+                </div>
+                <?php getDropdownUbicaciones(); ?>
+            </div>
+         </form>
+         <a href="#map">mapa</a>
+      </div>
+            </div>
+            </div>
+        <div id="map" class="s12"></div>
+        </div>
+        <div class="modal-footer">
+                <div class="col s1">
+                <div id="rep">
+
+                </div>
+                </div>
+                <div id="SolicitarCompraSolicitud" class="right-align">
+                </div>
+            </div>
+        </div>
+  </div>
+  <div id="mainframe">

@@ -1,0 +1,109 @@
+<!-- DIV cierra busqueda -->
+</div>
+
+<!-- Modal Structure -->
+  <div id="editarU" class="modal modal-fixed-footer"><!-- Modal de registro-->
+    <div class="modal-content">
+      <h4>Editar Usuario</h4>
+
+      <div id="forma" class="row">
+        <form id="EditarUsuarioForm" class="col s12"><!-- Solicitud a PHP de registro-->
+          <div class="row"><!-- Parametros empleados-->
+            <p>Nombre Completo: </p>
+
+            <div class="input-field col s4">
+            <div id="respuesta"></div>
+                <div id="aqui"> </div>
+                <div id="Nombre-modal"></div>
+            </div>
+            <div class="input-field col s4">
+                <div id="Ap-modal"></div>
+            </div>
+            <div class="input-field col s4">
+              <div id="Am-modal"></div>
+            </div>
+          </div>
+            <p>Datos de Usuario: </p>
+          <div class="row">
+            <div class="input-field col s6">
+              <div id="correo-modal"></div>
+            </div>
+            <?php echo getDropdownRoles(); ?>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <div id="contrasena-modal"></div>
+            </div>
+          </div>
+          <button type="submit" onClick="usuarioEditar()" id="editar" hidden="hidden"></button>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <label for="editar" class="modal-action modal-close waves-effect waves-green green btn-flat">Editar</label>
+      <a href="#" class="modal-action modal-close waves-effect waves-red red btn-flat">Cancelar</a>
+    </div>
+  </div>
+
+
+<!-- Modal Structure -->
+<div id="modalCrearCategoria1" class="modal ">
+  <div class="modal-content">
+    <h4>Crear Categoria</h4>
+
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input  id="nomCrearCategoria" type="text" class="validate">
+            <label class="active" for="nomCrearCategoria">Nombre de Categoria</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="desCrearCategoria" type="text" data-length="140">
+            <label class="active" for="desCrearCategoria">Descripcion de Categoria</label>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <a onclick="crearCategoria()" class="modal-action modal-close waves-effect waves-green green btn-flat ">Crear</a>
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modalEditarCategoria" class="modal ">
+  <div class="modal-content">
+    <h4>Editar Categoria</h4>
+
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12" id="nombreCategoria">
+            <!--<input  id="nomCrearCategoria" type="text" class="validate">
+            <label class="active" for="nomCrearCategoria">Nombre de Categoria</label>-->
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12" id="desCategoria">
+            <!--<input id="desCrearCategoria" type="text" data-length="140">
+            <label class="active" for="desCrearCategoria">Descripcion de Categoria</label>-->
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+
+  </div>
+  <div class="modal-footer" id="buttonEditarCategoria">
+    
+  </div>
+</div>
+<!-- CERRAR  BODY-->
+</body>

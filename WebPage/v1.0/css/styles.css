@@ -1,0 +1,36 @@
+
+
+
+#head_menu{
+  height: 150px;
+  background-color: rgb(254, 102, 16);
+}
+
+#Tex_Profile{
+  color: white;
+}
+#calificacion_s{
+  margin-left: 10px;
+}
+#profile_info{
+
+  margin-left: 3%;
+  width: 200px;
+  box-shadow: 0px 0px 10px grey;
+}
+#sides_profile{
+  background-color: white;
+}
+
+#producto_profile{
+
+}
+#center_profile{
+
+}
+#producto_head{
+  text-align: center;
+}
+#profile_grid{
+  margin: 10px;
+}

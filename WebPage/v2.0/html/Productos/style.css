@@ -1,0 +1,22 @@
+.card-image{
+    height: 30% !important;
+}
+.card{
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+#imagencarta{
+
+    max-height: 100%;
+
+}
+.collection{
+    position: fixed;
+    
+    width:16%;
+
+
+}
+#side1{
+    padding:0px;
+}

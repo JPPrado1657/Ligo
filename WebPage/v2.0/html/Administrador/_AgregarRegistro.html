@@ -1,0 +1,14 @@
+<title>Agregar Consulta</title>
+<body>
+    <div class="row">
+        <div class="col s2" id="side1">
+            <div class="collection">
+                <a id="Cuentas" onClick="mostrarAdministrador(this.id)" class="collection-item center-align">Cuentas</a>
+                <a id="Categorias" onClick="mostrarAdministrador(this.id)" class="collection-item center-align">Categorías</a>
+                <a id="ProductosRep" onClick="mostrarAdministrador(this.id)" class="collection-item center-align">Productos Reportados</a>
+            </div>
+        </div>
+        <div id="Contenido" class="col s10">
+            <?php echo obtenerUsuarios(); ?>
+        </div>
+    </div>
